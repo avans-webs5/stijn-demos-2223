@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "test": "none",
+    "start": "concurrently \"node ./apigateway/index.js\" \"node ./postService/index.js\""
+  },
   "dependencies": {
     "amqplib": "^0.10.3",
     "express": "^4.18.2",

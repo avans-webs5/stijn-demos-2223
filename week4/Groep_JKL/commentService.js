@@ -37,6 +37,7 @@ function listenToUpdates()
         const channel = await connection.createChannel();
     
         process.once('SIGINT', async () => { 
+          console.log('DIE DIE DIE ');
           await channel.close();
           await connection.close();
         });
