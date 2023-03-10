@@ -12,6 +12,8 @@ app.post('/blog', (req, res) => {
 
     let blog = new Blog(req.body);
 
+    console.log(req.body);
+
     blog.save().then((blog) => {
             
             updateOtherServices(blog);//??
@@ -21,7 +23,9 @@ app.post('/blog', (req, res) => {
 
 });
 
-app.listen(3001);
+app.listen(3001, () => {
+    console.log('Blog service listening on port 3001');
+});
 
 function updateOtherServices(blog)
 {
