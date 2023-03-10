@@ -1,20 +1,14 @@
-DEZE!
+# Week 5
 
-# https://tinyurl.com/4ybbcetu
+Check de live share link voor de workshop: https://tinyurl.com/3KVB3J5Y
 
-De volgende tutorial
+OF de github repo
 
-https://github.com/amqp-node/amqplib/tree/main/examples/tutorials
+https://github.com/avans-webs5/stijn-demos-2223
 
-
-``` 
-docker pull rabbitmq:3-management
-```
-
-(Moet docker wel opstarten - docker desktop )
-
-Daarna runnen
-
-``` 
-docker run -d -p 15672:15672 -p 5672:5672 --name rabbit-test-for-medium rabbitmq:3-management
-```
+Opdracht:
+1. MAak een API gateway met express
+2. Installeer de proxy package - axios-express-proxy
+3. Installeer de circuit breaker - opossum
+4. Maak een POST op /BLOG en forward deze naar de blogservice 
+5. Extra: Installeer dotenv en fix je configs!

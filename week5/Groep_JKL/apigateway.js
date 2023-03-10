@@ -26,7 +26,7 @@ const options = {
 app.post('/blog', (req, res) => {
 
     let host = process.env.BLOGSERVICE;
-    host = "http://localhost:3001/" + req.originalUrl
+    host = "http://localhost:3001" + req.originalUrl
     return Proxy(host, req, res);
 
     //Opdracht: Combineer dit met de circuitbreaker!
