@@ -6,7 +6,7 @@ dotenv.config();
 
 
 let app = express();
-app.use(express.json()); //json
+app.use(express.json()); //json ???
 const CircuitBreaker = require('opossum');
 
 //Voor is dat fetch

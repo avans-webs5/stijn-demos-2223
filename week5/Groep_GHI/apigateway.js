@@ -3,7 +3,8 @@ const dotenv = require('dotenv');
 const http = require('http');
 swaggerJsdoc = require("swagger-jsdoc"),
 swaggerUi = require("swagger-ui-express");
-const proxy = require('axios-express-proxy');
+const proxy = require('axios-express-proxy'); //you fool of a took
+const CircuitBreaker = require('opossum');
 
 dotenv.config()
  
@@ -14,7 +15,6 @@ let app = express();
 const expressSwagger = require('express-swagger-generator')(app);
 app.use(express.json()); //json 
 
-const CircuitBreaker = require('opossum');
 
 const options = {
   timeout: 3000, // If our function takes longer than 3 seconds, trigger a failure
@@ -73,3 +73,7 @@ function forward(service) {
         breaker.fire(service + req.originalUrl, req, res);
     }
 }
+
+let middleware = forward(service);
+
+app.use(middleware);

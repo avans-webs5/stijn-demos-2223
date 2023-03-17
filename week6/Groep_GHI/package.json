@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "test": "none",
+    "start": "concurrently \"nodemon ./apigateway.js\" \"nodemon ./blogservice.js\" \"nodemon ./commentservice.js\""
+  },
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "axios-express-proxy": "^1.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-http-proxy": "^1.6.3",
+    "http-proxy-middleware": "^2.0.6",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
