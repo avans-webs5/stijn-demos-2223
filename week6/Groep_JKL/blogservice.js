@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
+const fs   = require('fs');
+const jwt  = require('jsonwebtoken');
 mongoose.connect('mongodb://127.0.0.1:27017/groep_jkl_blog');
 
 let Blog = mongoose.model('blog', new mongoose.Schema({ username: String, content: String }));
@@ -8,7 +9,22 @@ let Blog = mongoose.model('blog', new mongoose.Schema({ username: String, conten
 let app = express();
 app.use(express.json()); //json 
 
+var publicKEY  = fs.readFileSync('./keys/public.key', 'utf8');
+
+
 app.post('/blog', (req, res) => {
+ 
+    //is iemand ingelogd?
+    let token = req.body.jwt;
+
+    //jwt valideren
+    let payload = jwt.verify(token, publicKEY)
+    console.log(payload);
+
+    console.log("------------------");
+    
+    let payload2 = jwt.decode(token);
+    console.log(payload2);
 
     let blog = new Blog(req.body);
 
