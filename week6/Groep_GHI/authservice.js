@@ -1,6 +1,6 @@
 const express = require('express');
 const fs   = require('fs');
-const jwt  = require('jsonwebtoken');
+const jwt  = require('jsonwebtoken'); //advies: gebruik passport
 
 let app = express();
 app.use(express.json()); //json 
@@ -18,10 +18,11 @@ var signOptions = {
     issuer:  i,
     subject:  s,
     audience:  a,
-    expiresIn:  "12h",
+    expiresIn:  "1h",
     algorithm:  "RS256" 
    };
 
+//NIET ECHT REST
 app.post('/login', (req, res) => {
 
     if(req.body.password == "Pa$$word")

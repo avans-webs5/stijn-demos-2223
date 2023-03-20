@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const fs = require('fs');
+const jwt = require('jsonwebtoken');
 
 let app = express();
 app.use(express.json()); //json 
@@ -8,7 +10,16 @@ mongoose.connect('mongodb://127.0.0.1:27017/GHI_Blog',);
 
 let Blog = mongoose.model('blog', new mongoose.Schema({ username: String, content: String }));
 
+var publicKEY  = fs.readFileSync('./keys/public.key', 'utf8');
+
+
 app.post('/blog', (req, res) => {
+
+    //verify token
+    let token = jwt.verify(req.body.jwt, publicKEY);
+    // let token = jwt.decode(req.body.jwt);
+
+    console.log(token);
 
     let blog = new Blog(req.body);
 
